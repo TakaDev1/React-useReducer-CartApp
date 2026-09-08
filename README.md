@@ -1,32 +1,99 @@
-# React + TypeScript + Vite
+# React-useReducer-CartApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Reactの`useReducer`と`useContext`を使用して、ショッピングカート機能を実装した練習用アプリです。
 
-Currently, two official plugins are available:
+## 概要
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+商品名と金額を入力して商品を追加し、カート内の商品を確認・削除できます。
 
-## React Compiler
+カートの状態管理には`useReducer`、コンポーネント間の状態共有には`useContext`を使用しています。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the Oxlint configuration
+* 商品の追加
+* 商品名・金額の入力
+* 入力値のバリデーション
+* カート内の商品表示
+* 商品の削除
+* カートのクリア
+* カートが空の場合の表示切り替え
+* UUIDによる商品IDの生成
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Tech Stack
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+* React
+* TypeScript
+* Vite
+* useState
+* useReducer
+* useContext
+* Tailwind CSS
+* uuid
+
+## Project Structure
+
+```text
+src/
+├── feature/
+│   ├── components/
+│   │   ├── AddProduct.tsx
+│   │   ├── ClearCart.tsx
+│   │   └── DisplayCart.tsx
+│   ├── contexts/
+│   │   └── CartContext.tsx
+│   ├── reducers/
+│   │   └── CartReducer.ts
+│   └── types/
+│       └── ProductCart.ts
+├── App.tsx
+└── main.tsx
+```
+
+## State Management
+
+`CartContext`でカートの状態と`dispatch`を共有し、`CartReducer`で状態変更を管理しています。
+
+```text
+Component
+    ↓
+dispatch
+    ↓
+CartReducer
+    ↓
+State
+    ↓
+Component
+```
+
+## Input Validation
+
+商品名は`trim()`で前後の空白を除去し、未入力の場合はエラーにします。
+
+金額は正規表現を使用して数字のみを許可し、`Number()`で`number`型へ変換しています。
+
+```tsx
+const trimmedInput = input.trim();
+const trimmedPrice = price.trim();
+
+if (!trimmedInput) {
+  throw new Error("商品名が未入力です");
+}
+
+if (!/^\d+$/.test(trimmedPrice)) {
+  throw new Error("金額が不正な値です");
 }
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Installation
+
+```bash
+npm install
+```
+
+## Development
+
+```bash
+npm run dev
+```
+
+ブラウザで表示されたURLにアクセスしてアプリを確認できます。
