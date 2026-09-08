@@ -40,16 +40,33 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <label htmlFor="name">
         商品名:
-        <input id="name" type="text" value={input} onChange={handleInput} />
+        <input
+          id="name"
+          type="text"
+          value={input}
+          onChange={handleInput}
+          className="border rounded ml-5 text-white"
+        />
       </label>
       <label htmlFor="price">
         金額:
-        <input id="price" type="text" value={price} onChange={handlePrice} />
+        <input
+          id="price"
+          type="text"
+          value={price}
+          onChange={handlePrice}
+          className="border rounded ml-5 text-white"
+        />
       </label>
-      <button onClick={handleAdd}>追加</button>
+      <button
+        onClick={handleAdd}
+        className="bg-blue-500 text-white w-1/4 mx-auto py-2 rounded-full hover:opacity-80"
+      >
+        追加
+      </button>
     </div>
   );
 };

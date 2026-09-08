@@ -6,7 +6,7 @@ import AddProduct from "./feature/components/AddProduct";
 
 function App() {
   return (
-    <div>
+    <div className="bg-gray-800 min-h-screen flex flex-col justify-center">
       <h1>React-useReducer-CartApp</h1>
       <CartProvider>
         <div>
