@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useCart } from "../feature/contexts/CartContext";
-import type { Product } from "../feature/types/ProductCart";
+import { useCart } from "../contexts/CartContext";
+import type { Product } from "../types/ProductCart";
 import { v4 as uuidv4 } from "uuid";
 
 const AddProduct = () => {
