@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "../contexts/CartContext";
 
 const ClearCart = () => {
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
 
   const handleClear = () => {
     dispatch({ type: "clear" });
@@ -10,6 +10,8 @@ const ClearCart = () => {
   return (
     <div>
       <button onClick={handleClear}>クリア</button>
+
+      {state.length > 0 ? <button onClick={handleClear}>クリア</button> : <p></p>}
     </div>
   );
 };

@@ -33,16 +33,21 @@ const AddProduct = () => {
       };
 
       dispatch({ type: "add", product: product });
+
+      setInput("");
+      setPrice("");
     }
   };
 
   return (
     <div>
       <label htmlFor="name">
-        <input id="name" type="text" value={input} onChange={handleInput} placeholder="商品名: " />
+        商品名:
+        <input id="name" type="text" value={input} onChange={handleInput} />
       </label>
       <label htmlFor="price">
-        <input id="price" type="text" value={price} onChange={handlePrice} placeholder="金額: " />
+        金額:
+        <input id="price" type="text" value={price} onChange={handlePrice} />
       </label>
       <button onClick={handleAdd}>追加</button>
     </div>
