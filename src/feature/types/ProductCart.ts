@@ -11,6 +11,9 @@ interface Cart {
 
 type State = Cart[];
 
-type Action = { type: "Add"; name: string } | { type: "remove"; id: string } | { type: "clear" };
+type Action =
+  | { type: "add"; product: Product }
+  | { type: "remove"; id: string }
+  | { type: "clear" };
 
 export type { Product, Cart, State, Action };
