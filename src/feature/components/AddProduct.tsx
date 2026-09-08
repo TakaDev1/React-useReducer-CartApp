@@ -33,6 +33,9 @@ const AddProduct = () => {
       };
 
       dispatch({ type: "add", product: product });
+
+      setInput("");
+      setPrice("");
     }
   };
 
